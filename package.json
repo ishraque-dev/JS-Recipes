@@ -1,0 +1,29 @@
+{
+  "name": "js-recipes",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishraque-dev/JS-Recipes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishraque-dev/JS-Recipes/issues"
+  },
+  "homepage": "https://github.com/ishraque-dev/JS-Recipes#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "parcel": "^2.8.0"
+  },
+  "dependencies": {
+    "core-js": "^3.26.1",
+    "regenerator-runtime": "^0.13.11"
+  }
+}
