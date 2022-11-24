@@ -3,6 +3,7 @@ import { Fraction } from 'fractional';
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
+  #successMessage = '';
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkUp();
@@ -12,7 +13,7 @@ class RecipeView {
   #clear() {
     this.#parentElement.innerHTML = '';
   }
-  render_spinner = function () {
+  render_spinner() {
     const markup = `
         <div class="spinner">
           <svg>
@@ -20,9 +21,40 @@ class RecipeView {
           </svg>
         </div>
   `;
-    this.#parentElement.innerHTML = '';
+    this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  };
+  }
+  render_error(message) {
+    const markup = `
+    <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+    `;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+  render_successMessage(message = this.#successMessage) {
+    const markup = `
+    <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-smile"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+    `;
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+  add_Handler_Render(handler) {
+    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+  }
   #generateMarkUp() {
     return `
         <figure class="recipe__fig">
