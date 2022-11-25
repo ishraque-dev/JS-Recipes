@@ -8,10 +8,10 @@ const timeout = function (s) {
   });
 };
 
-export const getJSON = async (API_URL, id) => {
+export const getJSON = async (API_URL, query) => {
   try {
     const response = await Promise.race([
-      fetch(`${API_URL}/${id}`),
+      fetch(`${API_URL}/${query}`),
       timeout(TIMEOUT_TIME),
     ]);
 
