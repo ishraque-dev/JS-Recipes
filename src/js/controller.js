@@ -4,11 +4,14 @@ import 'regenerator-runtime/runtime';
 import * as model from './model';
 import recipeView from './views/recipeView';
 import searchView from './views/searchView';
+import resultView from './views/resultView';
 
 // https://forkify-api.herokuapp.com/v2
 
 //////////////////////////////////////
-
+if (module.hot) {
+  module.hot.accept();
+}
 const controlRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -26,10 +29,11 @@ const controlRecipe = async function () {
 };
 const controlSeaResults = async function () {
   try {
+    resultView.render_spinner();
     const query = searchView.getQuery();
     if (!query) return;
     await model.loadRecipeData(query);
-    console.log(model.state.search.results);
+    resultView.render(model.state.search.results);
   } catch (err) {
     throw err;
   }
